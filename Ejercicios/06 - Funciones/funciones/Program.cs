@@ -6,7 +6,20 @@ namespace funciones
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Alumno a = new Alumno(1, "Juan", "Perez");
+            Alumno b = new Alumno(2, "Maria", "Paz");
+
+            a.inactivarAlumno();
+
+            Console.WriteLine(a.nombreCompleto());
+            Console.WriteLine(b.nombreCompleto());
+
+            a.activarAlumno();
+
+            Console.WriteLine("");
+
+            Console.WriteLine(a.nombreCompleto());
+            Console.WriteLine(b.nombreCompleto());
         }
     }
 }
