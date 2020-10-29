@@ -1,4 +1,4 @@
-using system;
+using System;
 using System.Collections.Generic;
 
 public class Escuela
