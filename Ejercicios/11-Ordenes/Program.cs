@@ -1,17 +1,17 @@
 ﻿using System;
 
-namespace _11_Ordenes
+namespace _10_Ordenes
 {
     class Program
     {
         static void Main(string[] args)
         {
+            DatosdePrueba datos = new DatosdePrueba();
             string opcion = "";
 
             while (true)
             {
                 Console.Clear();
-                
                 Console.WriteLine("Sistema de Ordenes");
                 Console.WriteLine("==================");
                 Console.WriteLine("");
@@ -39,13 +39,12 @@ namespace _11_Ordenes
                         break;      
                     case "5":
                         datos.ListarOrdenes();
-                        break;     
+                        break;                                          
                     default:
-                    break;
+                        break;
                 }
 
-                if (opcion == "0")
-                {
+                if (opcion == "0") {
                     break;
                 }
             }
