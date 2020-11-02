@@ -97,7 +97,8 @@ public class DatosdePrueba
     }
 
     public void CrearOrden()
-    {
+    {   
+        Console.Clear();
         Console.WriteLine("Creando Orden");
         Console.WriteLine("=============");
         Console.WriteLine("");
