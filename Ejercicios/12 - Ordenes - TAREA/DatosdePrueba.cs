@@ -31,6 +31,9 @@ public class DatosdePrueba
 
         Producto p3 = new Producto(3, "Monitor", 4000);
         ListadeProductos.Add(p3);
+
+        Producto p4 = new Producto(4, "Laptop msi", 17000);
+        ListadeProductos.Add(p4);
     }
 
     private void cargarClientes()
