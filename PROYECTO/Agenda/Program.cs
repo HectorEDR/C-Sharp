@@ -12,14 +12,14 @@ namespace Agenda
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Sistema de Ordenes");
+                Console.WriteLine("Sistema de Citas");
                 Console.WriteLine("==================");
                 Console.WriteLine("");
-                Console.WriteLine("1 - Lista de Productos");
-                Console.WriteLine("2 - Crear Orden");
-                Console.WriteLine("3 - Lista de Clientes");
-                Console.WriteLine("4 - Lista de Vendedores");
-                Console.WriteLine("5 - Lista de Ordenes");
+                Console.WriteLine("1 - Lista de Pacientes");
+                Console.WriteLine("2 - Crear Cita");
+                Console.WriteLine("3 - Lista de Doctores");
+                Console.WriteLine("4 - Lista de Especialistas");
+                Console.WriteLine("5 - Lista de Citas");
                 Console.WriteLine("0 - Salir");
                 opcion = Console.ReadLine();
 
@@ -27,6 +27,14 @@ namespace Agenda
                 {
                     case "1":
                         datos.ListarPacientes();
+                        break;
+
+                    case "3":
+                        datos.ListarDoctores();
+                        break;
+
+                    case "4":
+                        datos.ListarEspecialistas();
                         break;
                                                          
                     default:

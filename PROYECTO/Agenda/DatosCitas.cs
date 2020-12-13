@@ -74,19 +74,124 @@ public class DatosCitas
         Console.WriteLine(" Lista de Pacientes");
         Console.WriteLine("====================");
         Console.WriteLine("");
-        Console.WriteLine(" CD | Nombre | Apellido | Telefono |   | Edad || Identidad | Correo |");
-        Console.WriteLine("===================================== ===============================");
+        Console.WriteLine(" CD | Nombre | Apellido | Telefono |      | Edad || Identidad | Correo |");
+        Console.WriteLine("===================================== ===================================");
         Console.WriteLine("");
         
         foreach (var Pacientes in ListadePacientes)
         {
-            Console.WriteLine(Pacientes.Codigo + " | " + Pacientes.Nombre + " | " + Pacientes.Apellido + " | " + Pacientes.Telefono + " | " + Pacientes.Edad + " | " + Pacientes.Identidad + " | " + Pacientes.Correo);
+            Console.WriteLine(Pacientes.Codigo + " | " + Pacientes.Nombre + " | " + Pacientes.Apellido + " | " + Pacientes.Telefono + " |                 | " + Pacientes.Edad + " | " + Pacientes.Identidad + " | " + Pacientes.Correo);
         }
         
         Console.WriteLine("");
         Console.Write("Presione la tecla enter para salir.");
         
         Console.ReadLine();
+    }
+
+    public void ListarDoctores()
+    {
+        Console.Clear();
+        Console.WriteLine(" Lista de Doctores");
+        Console.WriteLine("====================");
+        Console.WriteLine("");
+        Console.WriteLine(" CD | Nombre | Apellido | Telefono | Horario | ");
+        Console.WriteLine("===============================================");
+        Console.WriteLine("");
+
+        foreach (var Doctor in ListadeDoctor)
+        {
+            Console.WriteLine(Doctor.CodigoDoctor + " | " + Doctor.Nombre + " | " + Doctor.Apellido + " | " + Doctor.Telefono + " | " + Doctor.Horario );
+        }
+
+        Console.WriteLine("");
+        Console.Write("Presione la tecla enter para salir.");
+        
+        Console.ReadLine();
+    }
+
+    public void ListarEspecialistas()
+    {
+        Console.Clear();
+        Console.WriteLine(" Lista de Especialistas");
+        Console.WriteLine("====================");
+        Console.WriteLine("");
+        Console.WriteLine(" CD | Nombre | Apellido | Telefono | Horario | Especialidad | ");
+        Console.WriteLine("==============================================================");
+        Console.WriteLine("");
+
+        foreach (var Especialistas in ListadeEspecialistas)
+        {
+            Console.WriteLine(Especialistas.CodigoEspecialista + " | " + Especialistas.Nombre + " | " + Especialistas.Apellido + " | " + Especialistas.Telefono + " | " + Especialistas.Horario + " | " + Especialistas.Especialidad);
+        }
+        
+        Console.WriteLine("");
+        Console.Write("Presione la tecla enter para salir.");
+        
+        Console.ReadLine();
+    }
+
+
+    public void crearCita()
+    {
+        Console.Clear();
+        Console.WriteLine(" Creando Cita");
+        Console.WriteLine("==============");
+        Console.WriteLine("");
+
+        Console.WriteLine("Ingrese el codigo del paciente: ");
+        string codigoPaciente = Console.ReadLine();
+
+        Pacientes pacientes = ListadePacientes.Find(p => p.Codigo.ToString() == codigoPaciente);        
+        if (pacientes == null)
+        {
+            Console.WriteLine("Cliente no encontrado");
+            Console.ReadLine();
+            return;
+        } else {
+            Console.WriteLine("Cliente: " + pacientes.Nombre);
+            Console.WriteLine("");
+        }
+
+        Console.WriteLine("Cita con Doctor, precione 1 | Cita con Especialista precione 2");
+        string opcion = Console.ReadLine();
+
+        if (opcion == "1")
+        {
+            Console.WriteLine("Ingrese el codigo del Doctor: ");
+            string codigoDoctor = Console.ReadLine();
+
+            Doctor doctor = ListadeDoctor.Find(d => d.Codigo.ToString() == codigoDoctor);
+            if (doctor == null) 
+            {
+                Console.WriteLine("Doctor no encontrado");
+                Console.ReadLine();
+                return;
+            } else {
+                Console.WriteLine("Doctor: " + doctor.Nombre);
+                Console.WriteLine("");
+            }
+        }
+        if (opcion == "2")
+        {
+            Console.WriteLine("Ingrese el codigo del Especialista: ");
+            string codigoEspecialista = Console.ReadLine();
+
+            Especialistas especialistas = ListadeEspecialistas.Find(e => e.Codigo.ToString() == codigoEspecialista);
+            if (especialistas == null) 
+            {
+                Console.WriteLine("Especialista no encontrado");
+                Console.ReadLine();
+                return;
+            } else {
+                Console.WriteLine("Especialista: " + especialistas.Nombre);
+                Console.WriteLine("");
+            }
+        }
+
+        int nuevoCodigo = ListadeCitas.Count + 1; 
+
+        Cita nuevaCita = new Cita (nuevoCodigo, DateTime.Now, "SPS" + nuevoCodigo, pacientes, doctor, especialistas);
     }
 }
 
