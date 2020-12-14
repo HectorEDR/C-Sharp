@@ -220,8 +220,9 @@ public void crearCita()
 
      public void BuscarCita()
      {
-         Console.WriteLine("Ingrese el codigo de la cita: ");
-         string CodCita = Console.ReadLine();
+        Console.Clear();
+        Console.WriteLine("Ingrese el codigo de la cita: ");
+        string CodCita = Console.ReadLine();
         Cita cita = ListadeCitas.Find(c => c.Codigo.ToString() == CodCita);
             if (cita == null) 
             {
