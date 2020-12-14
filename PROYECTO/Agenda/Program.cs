@@ -20,6 +20,7 @@ namespace Agenda
                 Console.WriteLine("3 - Lista de Doctores");
                 Console.WriteLine("4 - Lista de Especialistas");
                 Console.WriteLine("5 - Lista de Citas");
+                Console.WriteLine("6 - Buscar Cita");
                 Console.WriteLine("0 - Salir");
                 opcion = Console.ReadLine();
 
@@ -44,7 +45,10 @@ namespace Agenda
                     case "5":
                         datos.ListarCitas();
                         break;
-                                                         
+
+                    case "6":
+                        datos.BuscarCita();
+                        break;                                                         
                     default:
                         break;
                 }

@@ -147,11 +147,11 @@ public void crearCita()
         Pacientes pacientes = ListadePacientes.Find(p => p.Codigo.ToString() == codigoPaciente);        
         if (pacientes == null)
         {
-            Console.WriteLine("Cliente no encontrado");
+            Console.WriteLine("Paciente no encontrado");
             Console.ReadLine();
             return;
         } else {
-            Console.WriteLine("Cliente: " + pacientes.Nombre);
+            Console.WriteLine("Paciente: " + pacientes.Nombre);
             Console.WriteLine("");
         }
        
@@ -165,7 +165,7 @@ public void crearCita()
                 Console.ReadLine();
                 return;
             } else {
-                Console.WriteLine("Doctor: " + doctor.Nombre);
+                Console.WriteLine("Doctor: " + doctor.Nombre + " " + doctor.Apellido);
                 Console.WriteLine("");
             }
 
@@ -179,10 +179,13 @@ public void crearCita()
                 Console.ReadLine();
                 return;
             } else {
-                Console.WriteLine("Especialista: " + especialistas.Nombre);
+                Console.WriteLine("Especialista: " + especialistas.Nombre + " " + especialistas.Apellido);
                 Console.WriteLine("");
             }
-
+            
+            Console.WriteLine();
+            Console.Write("Presione la tecla enter para salir.");
+            Console.ReadLine();
 
         int nuevoCodigo = ListadeCitas.Count + 1; 
 
@@ -202,15 +205,47 @@ public void crearCita()
 
         foreach (var Cita in ListadeCitas)
         {
-            Console.WriteLine(Cita.Codigo + " | " + Cita.fechaCita);
-            Console.WriteLine(" Paciente | Doctor | Especialista");
-            Console.WriteLine("==================================");
-            Console.WriteLine(Cita.Pacientes.Nombre + " | " + Cita.Doctor.Nombre + " | " + Cita.Especialistas.Nombre);
+            Console.WriteLine(" " + Cita.Codigo + " | " + Cita.fechaCita);
+            Console.WriteLine();
+            Console.WriteLine("   Paciente | Doctor | Especialista");
+            Console.WriteLine("====================================");
+            Console.WriteLine();
+            Console.WriteLine(Cita.Pacientes.Nombre + " " + Cita.Pacientes.Apellido + " | " + Cita.Doctor.Nombre + " " + Cita.Doctor.Apellido +  " | " + Cita.Especialistas.Nombre + " " + Cita.Especialistas.Apellido);
         }
 
          Console.WriteLine();
          Console.Write("Presione la tecla enter para salir.");
          Console.ReadLine();
+     }
+
+     public void BuscarCita()
+     {
+         Console.WriteLine("Ingrese el codigo de la cita: ");
+         string CodCita = Console.ReadLine();
+        Cita cita = ListadeCitas.Find(c => c.Codigo.ToString() == CodCita);
+            if (cita == null) 
+            {
+                Console.WriteLine("Cita no encontrada");
+                Console.ReadLine();
+                return;
+            } else {
+                Console.WriteLine("Su cita es: ");
+                Console.WriteLine();
+                Console.WriteLine(" Codigo | Fecha de creacion | ");
+                Console.WriteLine("============================");
+                Console.WriteLine(cita.Codigo + " | " + cita.fechaCita);     
+                Console.WriteLine();
+                Console.WriteLine("   Paciente | Doctor | Especialista");
+                Console.WriteLine("====================================");
+                Console.WriteLine();
+                Console.WriteLine(cita.Pacientes.Nombre + " " + cita.Pacientes.Apellido + " | " + cita.Doctor.Nombre + " " + cita.Doctor.Apellido +  " | " + cita.Especialistas.Nombre + " " + cita.Especialistas.Apellido);     
+                Console.WriteLine();
+            }
+
+                Console.WriteLine("");
+                Console.WriteLine();
+                Console.Write("Presione la tecla enter para salir.");
+                Console.ReadLine();
      }
 }
 
