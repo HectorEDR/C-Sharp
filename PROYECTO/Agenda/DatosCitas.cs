@@ -132,8 +132,10 @@ public class DatosCitas
     }
 
 
-    public void crearCita()
-    {
+public void crearCita()
+{
+
+            
         Console.Clear();
         Console.WriteLine(" Creando Cita");
         Console.WriteLine("==============");
@@ -152,12 +154,7 @@ public class DatosCitas
             Console.WriteLine("Cliente: " + pacientes.Nombre);
             Console.WriteLine("");
         }
-
-        Console.WriteLine("Cita con Doctor, precione 1 | Cita con Especialista precione 2");
-        string opcion = Console.ReadLine();
-
-        if (opcion == "1")
-        {
+       
             Console.WriteLine("Ingrese el codigo del Doctor: ");
             string codigoDoctor = Console.ReadLine();
 
@@ -171,9 +168,7 @@ public class DatosCitas
                 Console.WriteLine("Doctor: " + doctor.Nombre);
                 Console.WriteLine("");
             }
-        }
-        if (opcion == "2")
-        {
+
             Console.WriteLine("Ingrese el codigo del Especialista: ");
             string codigoEspecialista = Console.ReadLine();
 
@@ -187,11 +182,35 @@ public class DatosCitas
                 Console.WriteLine("Especialista: " + especialistas.Nombre);
                 Console.WriteLine("");
             }
-        }
+
 
         int nuevoCodigo = ListadeCitas.Count + 1; 
 
         Cita nuevaCita = new Cita (nuevoCodigo, DateTime.Now, "SPS" + nuevoCodigo, pacientes, doctor, especialistas);
-    }
+        ListadeCitas.Add(nuevaCita);
+}
+    
+     public void ListarCitas()
+     {
+        Console.Clear();
+        Console.WriteLine("Lista de Citas");
+        Console.WriteLine("================");
+        Console.WriteLine("");  
+        Console.WriteLine(" Codigo | Fecha de creacion | ");
+        Console.WriteLine("============================");
+        Console.WriteLine("");  
+
+        foreach (var Cita in ListadeCitas)
+        {
+            Console.WriteLine(Cita.Codigo + " | " + Cita.fechaCita);
+            Console.WriteLine(" Paciente | Doctor | Especialista");
+            Console.WriteLine("==================================");
+            Console.WriteLine(Cita.Pacientes.Nombre + " | " + Cita.Doctor.Nombre + " | " + Cita.Especialistas.Nombre);
+        }
+
+         Console.WriteLine();
+         Console.Write("Presione la tecla enter para salir.");
+         Console.ReadLine();
+     }
 }
 

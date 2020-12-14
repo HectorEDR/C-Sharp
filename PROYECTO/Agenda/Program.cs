@@ -28,6 +28,10 @@ namespace Agenda
                     case "1":
                         datos.ListarPacientes();
                         break;
+                    
+                    case "2":
+                        datos.crearCita();
+                        break;
 
                     case "3":
                         datos.ListarDoctores();
@@ -35,6 +39,10 @@ namespace Agenda
 
                     case "4":
                         datos.ListarEspecialistas();
+                        break;
+
+                    case "5":
+                        datos.ListarCitas();
                         break;
                                                          
                     default:
